@@ -85,7 +85,10 @@ sub expand {
 
 sub decode {
     my ($self, $code, $stash) = @_;
-    return $stash->{$code};
+    my $val = $stash->{$code};
+    $val = &$val if ref($val) eq 'CODE';
+    $val = join('', @$val) if ref($val) eq 'ARRAY';
+    return $val;
 
     # XXX Not quite working fancy-dancy decoding follows...
     my $val = $stash || $self->stash;
