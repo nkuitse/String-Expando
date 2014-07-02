@@ -1,9 +1,11 @@
 package String::Expando;
 
-# ABSTRACT: expand %(xxx) sequences in strings
-
 use strict;
 use warnings;
+
+use vars qw($VERSION);
+
+$VERSION = '0.04';
 
 sub new {
     my $cls = shift;
